@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Clock</title>
+  <style>
+    body {
+      background: rgb(15, 146, 195);
+      background: linear-gradient(90deg,
+          rgba(15, 146, 195, 1) 0%,
+          rgba(45, 255, 210, 1) 0%,
+          rgba(35, 255, 171, 1) 100%);
+    }
+
+    div#clock {
+      font-size: 80px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(to right, #121FCF 0%, #CF1512 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+    }
+  </style>
+</head>
+
+<body>
+  <div id="clock"></div>
+
+  <script>
+    const displayClock = document.getElementById('clock');
+
+    // Callback function of setInterval
+    function myTime() {
+
+      // Initialize new Date object
+      let date = new Date();
+      let hours = 0// date.getHours();
+      let minutes = date.getMinutes();
+      let seconds = date.getSeconds();
+
+      // Formatting
+      hours = (hours == 0) ? 12 : hours;
+      let hoursFormat = (hours > 12) ? hours - 12 : hours;
+      let format = (hours < 12) ? "AM" : "PM";
+
+      // Display in the front-end
+      displayClock.innerHTML = `${timeFormat(hoursFormat)}:${timeFormat(minutes)}:${timeFormat(seconds)} ${format}`;
+    }
+
+    // Add zero bfore hour, minutes and seconds is less than 10
+    function timeFormat(time) {
+      return (time < 10) ? "0" + time : time;
+    }
+
+    // Run Every Seconds
+    setInterval(myTime, 1000);
+
+  </script>
+</body>
+
+</html>
