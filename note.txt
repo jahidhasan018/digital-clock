@@ -1,4 +1,4 @@
-https://dapper-mousse-ff18a1.netlify.app/
+https://codepen.io/jahidhasan018/full/BaqazgQ
 
 ## How i did it?
 - First in the html document i have added a div with id of clock to display the digital clock.
